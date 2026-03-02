@@ -1,6 +1,11 @@
 # Personal Knowledge AI Assistant (RAG)
 
-A powerful personal knowledge assistant that uses Retrieval Augmented Generation (RAG) to answer questions based on your uploaded PDF documents. It leverages the high-performance **Endee-io** vector database and **Google Gemini** for embeddings and generative responses.
+
+
+https://github.com/user-attachments/assets/72968eb9-46a8-4314-b7a2-6a70681d596f
+
+A powerful personal knowledge 
+assistant that uses Retrieval Augmented Generation (RAG) to answer questions based on your uploaded PDF documents. It leverages the high-performance **Endee-io** vector database and **Google Gemini** for embeddings and generative responses.
 
 ## Features
 
@@ -82,6 +87,3 @@ Use the provided startup script to run all services:
 - `vendor/endee/`: Endee-io vector database source code.
 - `start_services.sh`: Script to start all components.
 
-## License
-
-MIT
