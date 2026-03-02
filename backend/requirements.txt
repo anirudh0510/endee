@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+google-generativeai
+pymupdf
+requests
+python-multipart
+python-dotenv
+msgpack

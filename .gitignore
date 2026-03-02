@@ -1,32 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+backend/.env
 
-# Ignore build directory
-build/
-# Ignore build like directory
-build*/
-# Ignore all files in the build directory
-build/*
-
-# Ignore tests build directory
-tests/build/
-tests/build*/
-
-# Test binaries
-tests/**/ndd_filter_test
-
-# macOS debug symbols
-*.dSYM/
-
-# Sometimes data files are created for tetsing
-data/
-data/*
-
-# VS Code directory
-.vscode/
-.vscode/*
-
-# Frontend
-frontend/
-frontend/*
-
-# DS Store
+# Node
+node_modules/
+dist/
 .DS_Store
+
+# Endee-io
+vendor/endee/build/
+vendor/endee/data/
+vendor/endee/bin/
+*.o
+*.a
+*.so
+*.dylib
+ndd
+ndd-*
+
+# Project specific
+backend/temp_*
