@@ -24,8 +24,38 @@ assistant that uses Retrieval Augmented Generation (RAG) to answer questions bas
 
 ## Getting Started
 
-### Prerequisites
+### **System Architecture**
 
+The project follows a **Decoupled Microservices Architecture**:
+
+1. **Client Layer**: The React frontend communicates with the Backend via REST APIs.
+2. **Orchestration Layer**: The FastAPI backend acts as the "brain," coordinating between the PDF extractor, the Gemini API, and the Vector Database.
+3. **Storage Layer**:
+    - **Endee-io**: Stores high-dimensional vectors and their associated metadata (text chunks).
+    - **MDBX**: Used internally by Endee-io for lightning-fast key-value storage of metadata.
+
+### **The Workflow (The RAG Pipeline)**
+
+### **A. Ingestion Flow (Uploading a PDF)**
+
+1. **Extraction**:  extracts raw text from the PDF.
+    
+    ```
+    PyMuPDF
+    ```
+    
+2. **Chunking**: Text is split into **1000-character chunks** with a **200-character overlap** (to ensure context isn't lost at the edges).
+3. **Embedding**: Chunks are sent to Gemini, which returns a **3072-dimensional vector** for each chunk.
+4. **Indexing**: These vectors + the original text are stored in **Endee-io**.
+
+### **B. Retrieval & Generation Flow (Asking a Question)**
+
+1. **Query Embedding**: Your question is converted into a vector.
+2. **Semantic Search**: Endee-io finds the **Top 5 most similar** text chunks using Cosine Similarity.
+3. **Augmentation**: These 5 chunks are injected into a specialized prompt (the "Context").
+4. **Generation**: Gemini reads the context and answers the question **only** using that information (this prevents "hallucinations").
+
+### Prerequisites
 - Python 3.9+
 - Node.js & npm
 - C++ Compiler (Clang >= 17 recommended for Endee-io)
